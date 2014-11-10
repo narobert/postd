@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Postd | Post pictures of your friends</title>
+
+    <!-- Bootstrap -->
+    <link type='text/css' href="/css/bootstrap.css" rel="stylesheet" />
+    <link type='text/css' href="/css/style.css" rel="stylesheet" />
+
+    {% block css %}
+    {% endblock %}
+
+    <style>
+    body {
+      background: #3b5998;
+      margin-top: 20px;
+    }
+    </style>
+
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-md-12 column">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Postd</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><a href="/logout/">Logout</a></li>
+                {% else %}
+                <form class="navbar-form" method="post" action="/login/">
+                  <div class="form-group">
+                    <input type="text" name="username" maxlength="254" placeholder="Username" class="form-control" required>
+                    <input type="password" name="password" maxlength="4096" placeholder="Password" class="form-control"required>
+                  </div>
+                  <button class="btn btn-default" name="submit" type="submit">Sign in</button>
+                </form>
+                {% endif %}
+              </ul>
+            </ul>
+          </nav>	
+
+    {% block body %}
+    {% endblock %}
+
+        </div>
+      </div>
+    </div>
+
+    {% block extra-js %}
+    {% endblock %}
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type='text/javascript' src="/js/bootstrap.js"></script>
+    <script type='text/javascript' src="/js/Images.js"></script>
+
+  </body>
+</html>

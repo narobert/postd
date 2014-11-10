@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+  {% if form.errors %}
+
+  <div class="alert">Choose a different username idiot.</div>
+
+  <div class="jumbotron">
+    <form method="POST" action="/register/" enctype="multipart/form-data">
+      <div class="form-group"> 
+        <input type="text" name="fname" maxlength="20" placeholder="First name" class="form-control" required>
+        <input type="text" name="lname" maxlength="20" placeholder="Last name" class="form-control" required>
+        <input type="text" name="username" maxlength="20" placeholder="Username" class="form-control" required>
+        <input name="email" type="email" placeholder="Email" class="form-control" required>
+        <input type="password" name="password" maxlength="40" placeholder="Password" class="form-control" required>
+        <input type="file" name="image" class="form-control" required>
+      </div>
+      <p><button class="btn btn-default" name="submit" type="submit">Register</button></p>
+    </form>
+  </div>
+
+  {% else %}
+
+  <div class="jumbotron">
+    <form method="POST" action="/register/" enctype="multipart/form-data">
+      <div class="form-group"> 
+        <input type="text" name="fname" maxlength="20" placeholder="First name" class="form-control" required>
+        <input type="text" name="lname" maxlength="20" placeholder="Last name" class="form-control" required>
+        <input type="text" name="username" maxlength="20" placeholder="Username" class="form-control" required>
+        <input name="email" type="email" placeholder="Email" class="form-control" required>
+        <input type="password" name="password" maxlength="40" placeholder="Password" class="form-control" required>
+        <input type="file" name="image" class="form-control" required>
+      </div>
+      <p><button class="btn btn-default" name="submit" type="submit">Register</button></p>
+    </form>
+  </div>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block extra-js %}
+{% endblock %}
