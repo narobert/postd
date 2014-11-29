@@ -5,41 +5,46 @@
 
 {% block body %}
 
-  {% if form.errors %}
+{% if form.errors %}
 
-  <div class="alert">Choose a different username idiot.</div>
-
-  <div class="jumbotron">
-    <form method="POST" action="/register/" enctype="multipart/form-data">
-      <div class="form-group"> 
-        <input type="text" name="fname" maxlength="20" placeholder="First name" class="form-control" required>
-        <input type="text" name="lname" maxlength="20" placeholder="Last name" class="form-control" required>
-        <input type="text" name="username" maxlength="20" placeholder="Username" class="form-control" required>
-        <input name="email" type="email" placeholder="Email" class="form-control" required>
-        <input type="password" name="password" maxlength="40" placeholder="Password" class="form-control" required>
-        <input type="file" name="image" class="form-control" required>
-      </div>
-      <p><button class="btn btn-default" name="submit" type="submit">Register</button></p>
-    </form>
+<div class="container">
+  <div class="hero-unit" style="padding-top:0px;padding-bottom:40px;">
+    <center>
+    <div class="alert">&nbsp;&nbsp;&nbsp;&nbsp;Choose a different username idiot.</div>
+    <div class="preview">
+      <form method="POST" action="/register/" enctype="multipart/form-data">
+        <input type="text" name="fname" maxlength="20" placeholder="First name" required>
+        <input type="text" name="lname" maxlength="20" placeholder="Last name" required>
+        <input type="text" name="username" maxlength="20" placeholder="Username" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input type="password" name="password" maxlength="40" placeholder="Password" required>
+        <p><button class="btn btn-default" name="submit" type="submit" style="width:219px;">Register</button></p>
+      </form>
+    </div>
+    </center>
   </div>
+</div>
 
-  {% else %}
+{% else %}
 
-  <div class="jumbotron">
-    <form method="POST" action="/register/" enctype="multipart/form-data">
-      <div class="form-group"> 
-        <input type="text" name="fname" maxlength="20" placeholder="First name" class="form-control" required>
-        <input type="text" name="lname" maxlength="20" placeholder="Last name" class="form-control" required>
-        <input type="text" name="username" maxlength="20" placeholder="Username" class="form-control" required>
-        <input name="email" type="email" placeholder="Email" class="form-control" required>
-        <input type="password" name="password" maxlength="40" placeholder="Password" class="form-control" required>
-        <input type="file" name="image" class="form-control" required>
-      </div>
-      <p><button class="btn btn-default" name="submit" type="submit">Register</button></p>
-    </form>
+<div class="container">
+  <div class="hero-unit">
+    <center>
+    <div class="preview">
+      <form method="POST" action="/register/" enctype="multipart/form-data">
+        <input type="text" name="fname" maxlength="20" placeholder="First name" required>
+        <input type="text" name="lname" maxlength="20" placeholder="Last name" required>
+        <input type="text" name="username" maxlength="20" placeholder="Username" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input type="password" name="password" maxlength="40" placeholder="Password" required>
+        <p><button class="btn btn-default" name="submit" type="submit" style="width:219px;">Register</button></p>
+      </form>
+    </div>
+    </center>
   </div>
+</div>
 
-  {% endif %}
+{% endif %}
 
 {% endblock %}
 

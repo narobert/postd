@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <center>
+    <div class="imageBackground">
+      <div class="row">
+        <div class="span5">
+          <div id="enlarge">
+            <img src="/media/{{picture.paths}}">
+          </div>
+        </div>
+        <div class="span2">
+          <div class="word">
+            <p>Posted on {{picture.time}}</p>
+            <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.id}}">{{picture.user}}</a></p>
+            <p style="margin-top:-10px;margin-bottom:20px;">From: TBD</a></p>
+            <div id="caption">
+              <p>{{picture.name}}</p>
+            </div>
+          {% if user.username == picture.user.username %}
+          <div id="reccept">
+            <a id="accepts" data-id="{{picture.id}}">accept</a> | <a id="rejects" data-id="{{picture.id}}">reject</a>
+          </div>
+          {% else %}
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </center>
+</div>
+
+{% endblock %}
+
+{% block extra-js %}
+{% endblock %}

@@ -8,9 +8,16 @@ admin.autodiscover()
 urlpatterns = patterns('',
    
     url(r'^$', 'userprofile.views.home', name='home'),
+    url(r'^dashboard/', 'userprofile.views.dashboard', name='dashboard'),
     url(r'^login/', 'userprofile.views.login'),
     url(r'^logout/', 'userprofile.views.logout'),
     url(r'^register/', 'userprofile.views.register', name='register'),
+    url(r'^search/', 'userprofile.views.search', name='search'),
+    url(r'^submit/(?P<username>[\w\-]+)', 'userprofile.views.submit', name='submit'),
+    url(r'^changePic/', 'userprofile.views.changePic', name='changePic'),
+    url(r'^upload/(?P<id>[\w\-]+)/$', 'userprofile.views.picture'),
+    url(r'^upload/(?P<id>[\w|\W]+)/$', 'userprofile.views.picture'),
+    url(r'^user/(?P<username>[\w\-]+)/$', 'userprofile.views.profile'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

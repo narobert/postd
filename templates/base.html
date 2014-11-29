@@ -16,44 +16,77 @@
     <style>
     body {
       background: #3b5998;
-      margin-top: 20px;
+      padding-top: 90px;
     }
     </style>
-
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
   </head>
 
   <body>
-    <div class="container">
-      <div class="row clearfix">
-        <div class="col-md-12 column">
-          <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">Postd</a>
-            </div>
-
-            <ul class="nav navbar-nav">
-              <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                <li><a href="/logout/">Logout</a></li>
-                {% else %}
-                <form class="navbar-form" method="post" action="/login/">
-                  <div class="form-group">
-                    <input type="text" name="username" maxlength="254" placeholder="Username" class="form-control" required>
-                    <input type="password" name="password" maxlength="4096" placeholder="Password" class="form-control"required>
-                  </div>
-                  <button class="btn btn-default" name="submit" type="submit">Sign in</button>
-                </form>
-                {% endif %}
-              </ul>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">Postd</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              {% if user.is_authenticated %}
+              <li><a style="margin-top:-12px;" href="/logout/">| {{user.username}}</a></li>
+              <li><a style="margin-top:-12px;margin-right:-15px;" href="/dashboard/">Profile</a></li>
+              {% else %}
+              <form method="post" action="/login/">
+                <input type="text" name="username" maxlength="254" placeholder="Username" required>
+                <input type="password" name="password" maxlength="4096" placeholder="Password" required>
+                <button class="btn" name="submit" type="submit">Sign in</button>
+              </form>
+              {% endif %}
             </ul>
-          </nav>	
+              {% if user.is_authenticated %}
+              <ul class="nav">
+                <div class="search">
+                  <form method="get" action="/search/" style="margin-bottom:0px;">
+                    <input type="text" name="q" id="id_q" maxlength="254" style="margin-top:12px;margin-left:15px;width:400px;" placeholder="Find friends">
+                    <button class="search-button"><img id="changePic" src="/images/zoom_black.png"></button>
+                  </form>
+                </div>
+                <div class="search-results">
+                  {% if found_entries %}
+                    {% for i in found_entries %}
+                      <p id="user" data-id="{{i.id}}" style="margin-top:0;">{{ i.user.username }}</p>
+                    {% endfor %}
+                  {% endif %}
+                  {% if query_string and not found_entries %}
+                    <p>No results found.</p>
+                  {% endif %}
+                </div>
+              </ul>
+              {% else %}
+              <ul class="nav">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+              {% endif %}	
+          </div>
+        </div>
+      </div>
+    </div>	
 
     {% block body %}
     {% endblock %}
 
         </div>
       </div>
+    </div>
+
+    <div class="container footer">
+      <center>
+      <p><small>About &nbsp;|&nbsp; Team &nbsp;|&nbsp; Contact us &nbsp;|&nbsp; Donate &nbsp;|&nbsp; Careers &nbsp;|&nbsp; FAQ &nbsp;|&nbsp; Licensing &nbsp;|&nbsp; Copyright</small></p>
+      </center>
     </div>
 
     {% block extra-js %}

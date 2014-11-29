@@ -5,12 +5,43 @@
 
 {% block body %}
 
-  <div class="jumbotron">
-      <p>Hello, {{user.username}}!</p>
-      <p><a id="usernames">My pictures!</a></p>
-      <div id="username_picture"></div>
-      <div id="delete"></div>
+<div class="container">
+  <div class="hero-unit" style="padding-bottom:45px;">
+    <!--Notification like facebook that says: TBD sent you a pic!-->
+    <div id="pre_picture"></div>
   </div>
+</div>
+
+<div class="container">
+  <div class="hero-unit" style="padding-bottom:45px;">
+    <div class="row">
+      <div class="span3">
+        <p>{{user.username}}</p>
+        <div class="img-wrapper">
+          <ul class="img-list">
+            <li>
+              <div id="username_picture"></div>
+              <span class="text-content">
+                <span>
+                  <form method="POST" action="/changePic/" enctype="multipart/form-data">
+                    <label class="filebutton"><p style="margin-top:5px;">Change pic</p><span><input onchange="submit()" type="file" name="image" required></span></label>
+                  </form>
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <!--<div id="delete"></div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="hero-unit" style="padding-bottom:45px;">
+    <div id="your_picture"></div>
+  </div>
+</div>
 
 {% endblock %}
 
