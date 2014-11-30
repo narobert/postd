@@ -1,3 +1,5 @@
+/* ---- Change picture ---- */
+
 label.filebutton {
   width: 142px;
   height: 30px;
@@ -67,7 +69,35 @@ ul.img-list li:hover span.text-content {
   opacity: 1;
 }
 
+/* ---- Everything else ---- */
 
+#count {
+  display: inline;
+  color: #005580;
+}
+
+li.item {
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+li.item:first-child {
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d4d4d4;
+  border-top: 1px solid #d4d4d4;
+}
+
+li.item:last-child {
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d4d4d4;
+}
 
 .preview {
   width: 300px;
@@ -137,6 +167,7 @@ ul.img-list li:hover span.text-content {
   margin-bottom: 30px;
   font-size: 12px;
   font-weight: 200;
+  border-radius: 3px;
 }
 
 .footer {

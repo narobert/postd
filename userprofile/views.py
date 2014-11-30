@@ -22,8 +22,8 @@ def search(request):
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         entry_query = get_query(query_string, ['user__username'])
-        found_entries = Picture.objects.filter(entry_query)
-    return render_to_response('home.html', {'query_string': query_string, 'found_entries': found_entries[:1]}, context_instance=RequestContext(request))
+        found_entries = Profile.objects.filter(entry_query)
+    return render_to_response('home.html', {'query_string': query_string, 'found_entries': found_entries}, context_instance=RequestContext(request))
 
 
 def normalize_query(query_string, findterms=re.compile(r'"([^"]+)"|(\S+)').findall, normspace=re.compile(r'\s{2,}').sub):
@@ -108,7 +108,7 @@ def submit(request, username):
         form = UpForm(request.POST, request.FILES)
         if form.is_valid():
             profile = Profile.objects.get(user__username=username)
-            images = Picture.objects.create(user = profile.user, paths = form.cleaned_data['image'], name = form.cleaned_data['title'], time = timezone.now())
+            images = Picture.objects.create(user = profile.user, user_from = request.user, paths = form.cleaned_data['image'], name = form.cleaned_data['title'], time = timezone.now())
             images.save()
             return HttpResponseRedirect('/')
     else:

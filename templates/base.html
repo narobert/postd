@@ -36,8 +36,15 @@
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
               {% if user.is_authenticated %}
-              <li><a style="margin-top:-12px;" href="/logout/">| {{user.username}}</a></li>
-              <li><a style="margin-top:-12px;margin-right:-15px;" href="/dashboard/">Profile</a></li>
+              <li class="dropdown">
+                <a data-toggle="dropdown" style="margin-top:-12px;cursor:pointer;">{{user.username}} (<div id="count"></div>)</a>
+                <ul class="dropdown-menu">
+                  <div id="pre_picture"></div>
+                  <li><a href="/dashboard/">View my profile</a></li>
+                  <li><a href="/logout/">Logout</a></li>
+                </ul>
+              </li>
+              
               {% else %}
               <form method="post" action="/login/">
                 <input type="text" name="username" maxlength="254" placeholder="Username" required>
@@ -94,6 +101,33 @@
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script>
+    var dropdown = document.querySelectorAll('.dropdown');
+    var dropdownArray = Array.prototype.slice.call(dropdown,0);
+    dropdownArray.forEach(function(el){
+        var button = el.querySelector('a[data-toggle="dropdown"]'), menu = el.querySelector('.dropdown-menu'), arrow = button.querySelector('i.icon-arrow');
+        button.onclick = function(event) {
+            if(!menu.hasClass('show')) {
+                menu.classList.add('show');
+                menu.classList.remove('hide');
+                arrow.classList.add('open');
+                arrow.classList.remove('close');
+                event.preventDefault();
+            }
+            else {
+                menu.classList.remove('show');
+                menu.classList.add('hide');
+                arrow.classList.remove('open');
+                arrow.classList.add('close');
+                event.preventDefault();
+            }
+        };
+    })
+
+    Element.prototype.hasClass = function(className) {
+        return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
+    };
+    </script>
     <script type='text/javascript' src="/js/bootstrap.js"></script>
     <script type='text/javascript' src="/js/Images.js"></script>
 

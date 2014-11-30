@@ -23,9 +23,9 @@ def picture(request):
 @login_required
 def getProfile(request):
     id = request.POST.get("id")
-    picture = Picture.objects.get(id=id)
+    profile = Profile.objects.get(id=id)
 
-    profiles = Profile.objects.get(user=picture.user)
+    profiles = Profile.objects.get(user=profile.user)
     profilers = [profiles.for_json()]
     return {"status": "OK", "profiled": profilers}
 

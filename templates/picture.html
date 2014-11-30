@@ -17,12 +17,12 @@
         <div class="span2">
           <div class="word">
             <p>Posted on {{picture.time}}</p>
-            <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.id}}">{{picture.user}}</a></p>
-            <p style="margin-top:-10px;margin-bottom:20px;">From: TBD</a></p>
+            <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.user.id}}">{{picture.user}}</a></p>
+            <p style="margin-top:-10px;margin-bottom:20px;">From: <a id="user" data-id="{{picture.user_from.id}}">{{picture.user_from}}</a></p>
             <div id="caption">
               <p>{{picture.name}}</p>
             </div>
-          {% if user.username == picture.user.username %}
+          {% if user.username != picture.user_from %}
           <div id="reccept">
             <a id="accepts" data-id="{{picture.id}}">accept</a> | <a id="rejects" data-id="{{picture.id}}">reject</a>
           </div>

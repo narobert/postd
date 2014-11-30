@@ -47,7 +47,7 @@ function yourProfile() {
                 for (var i = 0; i < data["pictured"].length; i++) {
                     var picture = data["pictured"][i];
                     var your = picture.paths;
-                    var enlarge = picture.id;
+                    var enlarge = picture.id_picture;
                     pictures += "<div class=img-wrapper><a href=/upload/" + enlarge + "><img class=photo2 src=/media/" + your + "></a></div>";
                 }
                 $('#your_picture').html(pictures);
@@ -69,13 +69,15 @@ function firstLooking() {
                 for (var i = 0; i < data["pictured"].length; i++) {
                     var picture = data["pictured"][i];
                     var your = picture.paths;
-                    var enlarge = picture.id;
-                    var username = picture.username;
-                    pictures += "<div class=img-wrapper><a href=/upload/" + enlarge + ">" + username + "  sent you a pic!</a></div>";
+                    var enlarge = picture.id_picture;
+                    var username_from = picture.username_from;
+                    pictures += "<li class=item><a href=/upload/" + enlarge + ">" + username_from + "  sent you a pic!</a></li>";
                 }
                 $('#pre_picture').html(pictures);
+                $('#count').html(i);
             } else {
                 $('#pre_picture').html("Empty");
+                $('#count').html("");
             }
         },
     });
@@ -92,11 +94,13 @@ function everyoneImages() {
                 for (var i = 0; i < data["pictured"].length; i++) {
                     var picture = data["pictured"][i];
                     var your = picture.paths;
-                    var enlarge = picture.id;
+                    var userid = picture.id;
+                    var userid_from = picture.id_from;
                     var title = picture.name;
                     var time = picture.time;
                     var username = picture.username;
-                    pictures += "<div class=imageBackground><div class=row><div class=span5><div id=enlarge><img src=/media/" + your + "></div></div><div class=span2><div class=word><p>Posted on " + time + "</p><p style=margin-top:-10px;>To: <a id=user data-id=" + enlarge + ">" + username + "</a></p><p style=margin-top:-10px;margin-bottom:20px;>From: TBD</p><div id=caption><p>" + title + "</p></div></div></div></div></div>";
+                    var username_from = picture.username_from;
+                    pictures += "<div class=imageBackground><div class=row><div class=span5><div id=enlarge><img src=/media/" + your + "></div></div><div class=span2><div class=word><p>Posted on " + time + "</p><p style=margin-top:-10px;>To: <a id=user data-id=" + userid + ">" + username + "</a></p><p style=margin-top:-10px;margin-bottom:20px;>From: <a id=user data-id=" + userid_from + ">" + username_from + "</a></p><div id=caption><p>" + title + "</p></div></div></div></div></div>";
                 }
                 $('#everyone_picture').html(pictures);
             } else {
