@@ -80,30 +80,45 @@ li.item {
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #d4d4d4;
+  background: #eeeeee;
+  border-bottom: solid 1px #cccccc;
+  cursor: pointer;
 }
+  li.item:hover {
+    background: #0081c2;
+  }
+  li.item a {
+    font-size: 13px;
+    color: #333333;
+  }
+  li.item:hover a {
+    color: white;
+    text-decoration: none;
+  }
 
 li.item:first-child {
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #d4d4d4;
-  border-top: 1px solid #d4d4d4;
+  border-top: solid 1px #cccccc;
 }
-
 li.item:last-child {
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #d4d4d4;
 }
 
 .preview {
   width: 300px;
   background: #eeeeee;
+  border: solid 1px #cccccc;
   padding-top: 20px;
   padding-bottom: 3px;
+}
+
+.frame {
+  width: 143px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: -20px;
+  background: #eeeeee;
+  border: solid 1px #cccccc;
 }
 
 .word {
@@ -162,17 +177,21 @@ li.item:last-child {
 .imageBackground {
   background: white;
   text-align: left;
-  width: 670px;
+  width: 888px;
   padding: 32px;
   margin-bottom: 30px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 200;
   border-radius: 3px;
 }
 
 .footer {
-  color: white;
-  margin-bottom: 17px;
+  color: black;
+  padding-top: 19px;
+  height: 41px;
+  background: white;
+  font-size: 14px;
+  border-top: 1px solid #d4d4d4;
 }
 
 #everyone_picture img {
@@ -180,17 +199,17 @@ li.item:last-child {
 }
 
 #enlarge img {
-  width: 468px;
+  width: 565px;
   border: 1px solid #cccccc;
 }
 
 #caption {
   margin-top: 10px;
-  margin-bottom: -15px;
+  margin-bottom: -5px;
 }
 
 #reccept {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 #user {

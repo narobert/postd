@@ -14,8 +14,8 @@
         <p>Send a picture to {{profile.user}}!</p>
           <form method="POST" action="/submit/{{profile.user}}" enctype="multipart/form-data">
             <input type="text" name="title" maxlength="20" placeholder="Caption" required>
-            <input type="file" name="image" style="margin-left:40px;margin-top:11px;" required>
-            <p><button class="btn btn-default" name="submit" type="submit" style="margin-top:21px;width:219px;">Submit</button></p>
+            <input type="file" name="image" style="margin-left:40px;margin-top:3px;" required>
+            <p><button class="btn btn-default" name="submit" type="submit" style="margin-top:13px;width:219px;">Submit</button></p>
           </form>
         </center>
         </div>
@@ -24,14 +24,12 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="hero-unit" style="padding-bottom:45px;">
-    {% for picture in pictures reversed %}
-      <div class="img-wrapper2">
-        <a href="/upload/{{picture.id}}"><img class="photo4" src="/media/{{picture.paths}}"></a>
-      </div>
-    {% endfor %}
-  </div>
+<div class="container" style="margin-bottom:25px;">
+  {% for picture in pictures reversed %}
+    <div class="img-wrapper2">
+      <a href="/upload/{{picture.id}}"><img class="photo4" src="/media/{{picture.paths}}"></a>
+    </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

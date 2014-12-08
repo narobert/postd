@@ -23,3 +23,7 @@ class UpForm(forms.Form):
 class ChangePictureForm(forms.Form):
   image = forms.ImageField()
 
+
+class CommentForm(forms.Form):
+  comment = forms.CharField(max_length=200)
+

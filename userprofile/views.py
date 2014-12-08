@@ -9,9 +9,9 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from .forms import UserForm, UpForm, ChangePictureForm
+from .forms import UserForm, UpForm, ChangePictureForm, CommentForm
 from userprofile.models import Image
-from posted.models import Picture, Profile
+from posted.models import Picture, Profile, Comment
 from django.template import RequestContext
 from django.db.models import Q
 import re
@@ -59,7 +59,8 @@ def dashboard(request):
 
 def picture(request, id):
     picture = Picture.objects.get(id=id)
-    return render(request, 'picture.html', {'picture': picture})
+    comment = Comment.objects.filter(picture=picture)
+    return render(request, 'picture.html', {'picture': picture, 'comment': comment})
 
 def profile(request, username):
     profile = Profile.objects.get(user__username=username)
@@ -114,6 +115,18 @@ def submit(request, username):
     else:
         form = UpForm()
     return render(request, 'dashboard.html', {'form':form})
+
+def comment(request, id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            picture = Picture.objects.get(id=id)
+            comment = Comment.objects.create(user=request.user, title = form.cleaned_data['comment'], picture=picture)
+            comment.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = CommentForm()
+    return render(request, 'dashboard.html', {'form':form, 'picture':picture})
 
 def changePic(request):
     if (Image.objects.filter(user=request.user).count() == 1):

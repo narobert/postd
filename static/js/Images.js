@@ -71,7 +71,7 @@ function firstLooking() {
                     var your = picture.paths;
                     var enlarge = picture.id_picture;
                     var username_from = picture.username_from;
-                    pictures += "<li class=item><a href=/upload/" + enlarge + ">" + username_from + "  sent you a pic!</a></li>";
+                    pictures += "<li class=item><a href=/upload/" + enlarge + ">" + username_from + " sent you a pic!</a></li>";
                 }
                 $('#pre_picture').html(pictures);
                 $('#count').html(i);
@@ -100,7 +100,7 @@ function everyoneImages() {
                     var time = picture.time;
                     var username = picture.username;
                     var username_from = picture.username_from;
-                    pictures += "<div class=imageBackground><div class=row><div class=span5><div id=enlarge><img src=/media/" + your + "></div></div><div class=span2><div class=word><p>Posted on " + time + "</p><p style=margin-top:-10px;>To: <a id=user data-id=" + userid + ">" + username + "</a></p><p style=margin-top:-10px;margin-bottom:20px;>From: <a id=user data-id=" + userid_from + ">" + username_from + "</a></p><div id=caption><p>" + title + "</p></div></div></div></div></div>";
+                    pictures += "<div class=imageBackground><div class=row><div class=span6><div id=enlarge><img src=/media/" + your + "></div></div><div class=span2><p>Posted on " + time + "</p><p style=margin-top:-10px;>To: <a id=user data-id=" + userid + ">" + username + "</a></p><p style=margin-top:-10px;margin-bottom:20px;>From: <a id=user data-id=" + userid_from + ">" + username_from + "</a></p><div id=caption><p>" + title + "</p></div></div></div></div>";
                 }
                 $('#everyone_picture').html(pictures);
             } else {

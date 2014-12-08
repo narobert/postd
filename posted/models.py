@@ -20,6 +20,12 @@ class Vote(models.Model):
     upvoted = models.BooleanField(u"Upvote", default=False)
 
 
+class Comment(models.Model):
+    user = models.ForeignKey(User)
+    picture = models.ForeignKey(Picture)
+    title = models.CharField(max_length=200)
+
+
 class Profile(models.Model):
     id = models.AutoField('#', primary_key=True)
     user = models.ForeignKey(User)

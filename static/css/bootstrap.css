@@ -223,7 +223,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Oswald";
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -2924,18 +2924,7 @@ table th[class*="span"],
   padding-top: 5px;
   padding-bottom: 5px;
   clear: both;
-  font-weight: normal;
-  line-height: 20px;
-  color: #333333;
-  white-space: nowrap;
-}
-
-.dropdown-menu > li > a {
-  display: block;
-  padding-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  clear: both;
+  font-size: 13px;
   font-weight: normal;
   line-height: 20px;
   color: #333333;
@@ -4437,7 +4426,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .btn,
 .navbar .btn-group {
-  margin-top: -10px;
+  margin-top: -11px;
 }
 
 .navbar .btn-group .btn,
@@ -6086,7 +6075,7 @@ a.badge:focus {
   width: 842px;
   padding: 55px;
   margin-bottom: 30px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 200;
   line-height: 30px;
   color: inherit;

@@ -6,33 +6,37 @@
 {% block body %}
 
 <div class="container">
-    <center>
     <div class="imageBackground">
       <div class="row">
-        <div class="span5">
+        <div class="span6">
           <div id="enlarge">
             <img src="/media/{{picture.paths}}">
           </div>
         </div>
         <div class="span2">
-          <div class="word">
-            <p>Posted on {{picture.time}}</p>
-            <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.user.id}}">{{picture.user}}</a></p>
-            <p style="margin-top:-10px;margin-bottom:20px;">From: <a id="user" data-id="{{picture.user_from.id}}">{{picture.user_from}}</a></p>
-            <div id="caption">
-              <p>{{picture.name}}</p>
-            </div>
-          {% if user.username != picture.user_from %}
+          <p>Posted on {{picture.time}}</p>
+          <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.user.id}}">{{picture.user}}</a></p>
+          <p style="margin-top:-10px;margin-bottom:20px;">From: <a id="user" data-id="{{picture.user_from.id}}">{{picture.user_from}}</a></p>
+          <div id="caption">
+            <p>{{picture.name}}</p>
+          </div>
+          <form method="POST" action="/comment/{{picture.id}}" enctype="multipart/form-data">
+            <input type="text" name="comment" maxlength="200" style="width:273px;margin-top:20px;" placeholder="Write a comment" required>
+            <p><button class="btn btn-default" name="submit" type="submit" style="width:286px;">Submit</button></p>
+          </form>
+          {% for comment in comment reversed %}
+            <p>{{comment.user}}</p>
+            <p style="margin-top:-10px;">{{comment.title}}</p>
+          {% endfor %}
+          {% if picture.user.username == user.username %}
           <div id="reccept">
             <a id="accepts" data-id="{{picture.id}}">accept</a> | <a id="rejects" data-id="{{picture.id}}">reject</a>
           </div>
           {% else %}
           {% endif %}
-          </div>
         </div>
       </div>
     </div>
-    </center>
 </div>
 
 {% endblock %}
