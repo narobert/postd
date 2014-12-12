@@ -48,9 +48,11 @@ def get_query(query_string, search_fields):
 
 
 def home(request):
+    picture = Picture.objects.filter(upvotes=1)
+    comment = Comment.objects.all()
     if not request.user.is_authenticated():
         return render_to_response("register.html")
-    return render_to_response("home.html", {"user": request.user})
+    return render_to_response("home.html", {"user": request.user, 'picture': picture, 'comment': comment})
 
 def dashboard(request):
     if not request.user.is_authenticated():
@@ -121,7 +123,7 @@ def comment(request, id):
         form = CommentForm(request.POST)
         if form.is_valid():
             picture = Picture.objects.get(id=id)
-            comment = Comment.objects.create(user=request.user, title = form.cleaned_data['comment'], picture=picture)
+            comment = Comment.objects.create(user_comment = request.user, title = form.cleaned_data['comment'], picture=picture)
             comment.save()
             return HttpResponseRedirect('/')
     else:

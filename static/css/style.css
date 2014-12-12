@@ -1,3 +1,16 @@
+/* ---- View comments ---- */
+.sidebar {
+  padding: 32px;
+  width: 206px;
+  height: 100%;
+  position: fixed;
+  z-index: 110;
+  top: 60px;
+  right: 0px;
+  background: white;
+  border-left: solid 1px #d4d4d4;
+}
+
 /* ---- Change picture ---- */
 
 label.filebutton {
@@ -109,6 +122,8 @@ li.item:last-child {
   border: solid 1px #cccccc;
   padding-top: 20px;
   padding-bottom: 3px;
+  padding-bottom: 10px;
+  margin-bottom:20px;
 }
 
 .frame {
@@ -116,7 +131,7 @@ li.item:last-child {
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: -20px;
+  margin-bottom: 20px;
   background: #eeeeee;
   border: solid 1px #cccccc;
 }
@@ -175,23 +190,65 @@ li.item:last-child {
 }
 
 .imageBackground {
+  position: relative;
   background: white;
   text-align: left;
-  width: 888px;
-  padding: 32px;
   margin-bottom: 30px;
   font-size: 13px;
   font-weight: 200;
   border-radius: 3px;
 }
 
-.footer {
-  color: black;
-  padding-top: 19px;
-  height: 41px;
+.profileBackground {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  border-top: 1px solid #cccccc;
+  background: #f1f1f1;
+}
+
+.commentBackground {
+  position: absolute;
+  top: 120px;
+  bottom: 80px;
+  overflow-y: auto;
+  margin-top: 30px;
+  padding: 20px;
+  width: 232px;
+  border: 1px solid #cccccc;
   background: white;
-  font-size: 14px;
-  border-top: 1px solid #d4d4d4;
+  border-radius: 3px;
+}
+
+.formBackground {
+  position: absolute;
+  bottom: 0;
+}
+
+.grayBackground2 {
+  width: 291px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-left: 1px solid #cccccc;
+  background: #f1f1f1;
+  padding-top: 25px;
+  padding-left: 22px;
+  margin-left: 5px;
+  padding-right: 6px;
+  position: absolute;
+  top:0;
+  bottom:0;
+}
+
+.footer {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 13px;
+  font-weight: 200;
 }
 
 #everyone_picture img {
@@ -199,8 +256,11 @@ li.item:last-child {
 }
 
 #enlarge img {
-  width: 565px;
-  border: 1px solid #cccccc;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  width: 600px;
 }
 
 #caption {
@@ -209,7 +269,13 @@ li.item:last-child {
 }
 
 #reccept {
-  margin-top: 60px;
+  margin-top: 12px;
+  margin-bottom: -10px;
+  padding-left: 20px;
+}
+
+#comments {
+  cursor: pointer;
 }
 
 #user {
@@ -232,6 +298,22 @@ li.item:last-child {
     padding-left: 10px;
     padding-right: 10px;
     background: white;
+    border-radius: 3px;
+    border: none;
+  }
+
+.comment {}
+
+  .comment-button {
+    position: absolute;
+    margin-top: -43px;
+    margin-left: 206px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #3b5998;
+    color: white;
     border-radius: 3px;
     border: none;
   }

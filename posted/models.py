@@ -21,9 +21,12 @@ class Vote(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User)
+    user_comment = models.ForeignKey(User)
     picture = models.ForeignKey(Picture)
     title = models.CharField(max_length=200)
+
+    def for_json(self):
+        return {"user_comment": self.user_comment.username, "title": self.title, "id": self.picture.id}
 
 
 class Profile(models.Model):

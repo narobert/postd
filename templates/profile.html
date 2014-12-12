@@ -8,8 +8,8 @@
 <div class="container">
   <div class="hero-unit">
     <div class="row">
-      <div class="span3">
-        <div class="preview" style="padding-bottom:10px;">
+      <div class="span9">
+        <div class="preview">
         <center>
         <p>Send a picture to {{profile.user}}!</p>
           <form method="POST" action="/submit/{{profile.user}}" enctype="multipart/form-data">
@@ -21,15 +21,14 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="container" style="margin-bottom:25px;">
-  {% for picture in pictures reversed %}
-    <div class="img-wrapper2">
-      <a href="/upload/{{picture.id}}"><img class="photo4" src="/media/{{picture.paths}}"></a>
+    <div class="profileBackground">
+    {% for picture in pictures reversed %}
+      <div class="img-wrapper2">
+        <a href="/upload/{{picture.id}}"><img class="photo4" src="/media/{{picture.paths}}"></a>
+      </div>
+    {% endfor %}
     </div>
-  {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

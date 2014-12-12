@@ -131,7 +131,7 @@
   .navbar-static-top .container,
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container {
-    width: 1170px;
+    width: 960px;
   }
   .span12 {
     width: 1170px;
@@ -149,7 +149,7 @@
     width: 770px;
   }
   .span7 {
-    width: 670px;
+    width: 605px;
   }
   .span6 {
     width: 570px;
@@ -161,10 +161,10 @@
     width: 370px;
   }
   .span3 {
-    width: 270px;
+    width: 240px;
   }
   .span2 {
-    width: 170px;
+    width: 130px;
   }
   .span1 {
     width: 70px;

@@ -11,6 +11,7 @@ urlpatterns = patterns(
     (r'reject$', 'reject'),
     (r'load$', 'load'),
     (r'everyone$', 'everyone'),
+    (r'everyonePics$', 'everyonePics'),
     (r'delete$', 'delete')
 
 )

@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
 from userprofile.models import Image
-from posted.models import Picture, Profile, Vote
 from annoying.decorators import ajax_request
+from posted.models import Picture, Profile, Vote, Comment
 from django.http import HttpResponseRedirect, HttpResponse
 import simplejson as json
 
@@ -54,14 +54,24 @@ def firstLook(request):
         return {"status": "NotYEE"}
 
 
-
-@ajax_request
+@ajax_request 
 @login_required
 def everyone(request):
+    id = request.POST.get("id")
+    picture = Picture.objects.get(id=id)
 
-    pictures = Picture.objects.filter(upvotes=1).order_by("-id")
+    comments = Comment.objects.filter(picture=picture)
+    commenters = [pl.for_json() for pl in comments]
+    return {"status": "OHYEA", "commented": commenters}
+
+
+@ajax_request 
+@login_required
+def everyonePics(request):
+
+    pictures = Picture.objects.filter(upvotes = 1).order_by("-id")
     picturers = [pl.for_json() for pl in pictures]
-    return {"status": "BOMB", "pictured": picturers}
+    return {"status": "OHK", "pictured": picturers}
 
 
 @ajax_request 

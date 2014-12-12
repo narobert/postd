@@ -6,7 +6,34 @@
 {% block body %}
 
 <div class="container">
-  <div id="everyone_picture"></div>
+  {% for picture in picture reversed %}
+  <div class="imageBackground">
+    <div class="row">
+      <div class=span7>
+        <div id=enlarge><img src=/media/{{picture.paths}}></div>
+      </div>
+      <div class=span3>
+        <div class="grayBackground2">
+          <p>Posted on {{picture.time}}</p>
+          <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.user.id}}">{{picture.user}}</a></p>
+          <p style="margin-top:-10px;margin-bottom:20px;">From: <a id="user" data-id="{{picture.user_from.id}}">{{picture.user_from}}</a></p>
+          <div id="caption">
+            <p>{{picture.name}}</p>
+          </div>
+          <div class="commentBackground">
+            <div id="comment_picture{{picture.id}}"></div>
+          </div>
+          <div class="formBackground comment">
+            <form method="POST" action="/comment/{{picture.id}}" enctype="multipart/form-data">
+              <input type="text" name="comment" maxlength="200" style="width:260px;" placeholder="Write a comment" required>
+              <p><button class="comment-button">Submit</button></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

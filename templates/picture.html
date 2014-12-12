@@ -5,39 +5,48 @@
 
 {% block body %}
 
-<div class="container">
+  <div class="container">
     <div class="imageBackground">
       <div class="row">
-        <div class="span6">
-          <div id="enlarge">
-            <img src="/media/{{picture.paths}}">
-          </div>
-        </div>
-        <div class="span2">
-          <p>Posted on {{picture.time}}</p>
-          <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.user.id}}">{{picture.user}}</a></p>
-          <p style="margin-top:-10px;margin-bottom:20px;">From: <a id="user" data-id="{{picture.user_from.id}}">{{picture.user_from}}</a></p>
-          <div id="caption">
-            <p>{{picture.name}}</p>
-          </div>
-          <form method="POST" action="/comment/{{picture.id}}" enctype="multipart/form-data">
-            <input type="text" name="comment" maxlength="200" style="width:273px;margin-top:20px;" placeholder="Write a comment" required>
-            <p><button class="btn btn-default" name="submit" type="submit" style="width:286px;">Submit</button></p>
-          </form>
-          {% for comment in comment reversed %}
-            <p>{{comment.user}}</p>
-            <p style="margin-top:-10px;">{{comment.title}}</p>
-          {% endfor %}
+        <div class="span7">
           {% if picture.user.username == user.username %}
           <div id="reccept">
             <a id="accepts" data-id="{{picture.id}}">accept</a> | <a id="rejects" data-id="{{picture.id}}">reject</a>
           </div>
           {% else %}
+          <div id="reccept">
+            <a>Poke {{picture.user}}!</a>
+          </div>
           {% endif %}
+          <div id="enlarge">
+            <img src="/media/{{picture.paths}}">
+          </div>
+        </div>
+        <div class="span3">
+          <div class="grayBackground2">
+            <p>Posted on {{picture.time}}</p>
+            <p style="margin-top:-10px;">To: <a id="user" data-id="{{picture.user.id}}">{{picture.user}}</a></p>
+            <p style="margin-top:-10px;margin-bottom:20px;">From: <a id="user" data-id="{{picture.user_from.id}}">{{picture.user_from}}</a></p>
+            <div id="caption">
+              <p>{{picture.name}}</p>
+            </div>
+            <div class="commentBackground">
+              {% for comment in comment %}
+                <p>{{comment.user_comment}}</p>
+                <p style="margin-top:-10px;">{{comment.title}}</p>
+              {% endfor %}
+            </div>
+            <div class="formBackground comment">
+              <form method="POST" action="/comment/{{picture.id}}" enctype="multipart/form-data">
+                <input type="text" name="comment" maxlength="200" style="width:260px;" placeholder="Write a comment" required>
+                <p><button class="comment-button">Submit</button></p>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
 {% endblock %}
 

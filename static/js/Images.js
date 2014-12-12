@@ -1,6 +1,6 @@
 function loadAll() {
   profile();
-  everyoneImages();
+  realComments();
   yourProfile();
   firstLooking();
 }
@@ -83,33 +83,6 @@ function firstLooking() {
     });
 }
 
-function everyoneImages() {
-    $.ajax({
-        url: "/ajax/posted/everyone",
-        type: "POST",
-        dataType: "json",
-        success: function(data) {
-            if (data["status"] == "BOMB") {
-                var pictures = "";
-                for (var i = 0; i < data["pictured"].length; i++) {
-                    var picture = data["pictured"][i];
-                    var your = picture.paths;
-                    var userid = picture.id;
-                    var userid_from = picture.id_from;
-                    var title = picture.name;
-                    var time = picture.time;
-                    var username = picture.username;
-                    var username_from = picture.username_from;
-                    pictures += "<div class=imageBackground><div class=row><div class=span6><div id=enlarge><img src=/media/" + your + "></div></div><div class=span2><p>Posted on " + time + "</p><p style=margin-top:-10px;>To: <a id=user data-id=" + userid + ">" + username + "</a></p><p style=margin-top:-10px;margin-bottom:20px;>From: <a id=user data-id=" + userid_from + ">" + username_from + "</a></p><div id=caption><p>" + title + "</p></div></div></div></div>";
-                }
-                $('#everyone_picture').html(pictures);
-            } else {
-                $('#everyone_picture').html("Empty");
-            }
-        },
-    });
-}
-
 $('body').delegate('#user', 'click', function() {
     loadProfiles($(this).attr("data-id"));
 }); 
@@ -128,6 +101,51 @@ function loadProfiles(id) {
                 var profile = data["profiled"][0];
                 var me = profile.username;
                 window.location.href = "/user/" + me + "";
+            }
+        },
+    });
+  }
+};
+
+function realComments() {
+    $.ajax({
+        url: "/ajax/posted/everyonePics",
+        type: "POST",
+        dataType: "json",
+        success: function(data) {
+            if (data["status"] == "OHK") {
+                var pictures = "";
+                for (var i = 0; i < data["pictured"].length; i++) {
+                    var picture = data["pictured"][i];
+                    var enlarge = picture.id_picture;
+                    viewComments(enlarge);
+                }
+            }
+        },
+    });
+};
+
+function viewComments(id) {
+  if (id) {
+    var _this = this;
+    $.ajax({
+        url: "/ajax/posted/everyone",
+        data: ({ id: id }),
+        type: "POST",
+        dataType: "json",
+        success: function(data) {
+            if (data["status"] == "OHYEA") {
+              var comments = "";
+                for (var i = 0; i < data["commented"].length; i++) {
+                    var comment = data["commented"][i];
+                    var comment_user = comment.user_comment;
+                    var comment_title = comment.title;
+                    var comment_id = comment.id;
+                    comments += "<p>" + comment_user + "</p><p style=margin-top:-10px;>" + comment_title + "</p>";
+                }
+                $('#comment_picture' + comment_id + '').html(comments);
+            } else {
+                $('#comment_picture').html("No comments");
             }
         },
     });
