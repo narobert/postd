@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="hero-unit">
+    <div class="row">
+      <div class="span10">
+        <h4>Search results</h4>
+      </div>
+    </div>
+    <div class="searchBackground">
+      {% if found_entries %}
+        {% for i in found_entries %}
+          <div class="row">
+            <div class="span1" style="width:35px;">
+                <img class="photo_small" src="/media/{{i.image.path}}"></img>
+            </div>
+            <div class="span5">
+              <h5 id="user" class="result1" data-id="{{i.id}}">{{i.user.username}}</h5>
+              <p class="result2">{{i.information.location}}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% if query_string and not found_entries %}
+        <p id="noResults">No results found.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra-js %}
+{% endblock %}
