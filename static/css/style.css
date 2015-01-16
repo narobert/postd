@@ -14,7 +14,7 @@
 /* ---- Change picture ---- */
 
 label.filebutton {
-  width: 142px;
+  width: 143px;
   height: 30px;
   overflow: hidden;
   position: relative;
@@ -123,7 +123,7 @@ li.item:last-child {
   padding-top: 20px;
   padding-bottom: 3px;
   padding-bottom: 10px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 .frame {
@@ -150,6 +150,36 @@ li.item:last-child {
   display: inline-block;
   overflow: hidden;
   margin-right: 14px;
+}
+
+.img-wrapper3 {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.photo_small {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  transform:scale(1.5);
+  -ms-transform:scale(1.5);
+  -moz-transform:scale(1.5);
+  -webkit-transform:scale(1.5);
+  -o-transform:scale(1.5);
+}
+.photo_small:first-child {
+  margin-top: 20px;
+}
+
+.photo_smaller {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.photo_smaller:first-child {
+  margin-top: 5px;
 }
 
 .photo {
@@ -189,6 +219,18 @@ li.item:last-child {
   -o-transform:scale(1.5);
 }
 
+.result1 {
+  padding-top: 5px;
+}
+
+.result2 {
+  padding-top: 10px;
+}
+
+.comment2 {
+  margin-top: -3px;
+}
+
 .imageBackground {
   position: relative;
   background: white;
@@ -211,14 +253,26 @@ li.item:last-child {
   background: #f1f1f1;
 }
 
+.searchBackground {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  border-top: 1px solid #cccccc;
+  background: #f1f1f1;
+}
+
 .commentBackground {
   position: absolute;
   top: 120px;
   bottom: 80px;
   overflow-y: auto;
   margin-top: 30px;
-  padding: 20px;
-  width: 232px;
+  padding: 10px;
+  width: 252px;
   border: 1px solid #cccccc;
   background: white;
   border-radius: 3px;
@@ -278,6 +332,12 @@ li.item:last-child {
   cursor: pointer;
 }
 
+#noResults {
+  margin-top: 10px;
+  margin-bottom: -15px;
+  padding-bottom: 25px;
+}
+
 #user {
   margin-top: 10px;
   margin-bottom: -15px;
@@ -307,7 +367,7 @@ li.item:last-child {
   .comment-button {
     position: absolute;
     margin-top: -43px;
-    margin-left: 206px;
+    margin-left: 212px;
     padding-top: 4px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -317,12 +377,5 @@ li.item:last-child {
     border-radius: 3px;
     border: none;
   }
-
-.search-results {
-  position: absolute;
-  margin-top: -38px;
-  margin-left: 455px;
-  width: 150px;
-}
 
 

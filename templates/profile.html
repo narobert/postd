@@ -8,14 +8,28 @@
 <div class="container">
   <div class="hero-unit">
     <div class="row">
-      <div class="span9">
+      <div class="span3" style="width:160px;">
+        <div class="frame">
+          <div class="img-wrapper">
+            <ul class="img-list">
+              <li><img class="photo" src="/media/{{images.path}}"></img></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="span4" style="width:398px;">
+        <h3>{{profile.user}}</h3>
+        <p style="margin-top:0px;">{{information.location}}</p>
+        <p style="margin-top:-15px;">{{information.interests}}</p>
+      </div>
+      <div class="span3">
         <div class="preview">
         <center>
-        <p>Send a picture to {{profile.user}}!</p>
+          <p>Send a picture to {{profile.user}}!</p>
           <form method="POST" action="/submit/{{profile.user}}" enctype="multipart/form-data">
             <input type="text" name="title" maxlength="20" placeholder="Caption" required>
             <input type="file" name="image" style="margin-left:40px;margin-top:3px;" required>
-            <p><button class="btn btn-default" name="submit" type="submit" style="margin-top:13px;width:219px;">Submit</button></p>
+            <p><button class="btn btn-default" name="submit" type="submit" style="margin-top:13px;width:226px;">Submit</button></p>
           </form>
         </center>
         </div>

@@ -141,7 +141,9 @@ function viewComments(id) {
                     var comment_user = comment.user_comment;
                     var comment_title = comment.title;
                     var comment_id = comment.id;
-                    comments += "<p>" + comment_user + "</p><p style=margin-top:-10px;>" + comment_title + "</p>";
+                    var comment_userid = comment.id_user;
+                    var comment_image = comment.image;
+                    comments += "<div class=row><div class=span1 style=width:45px;><img class=photo_smaller src=/media/" + comment_image + "></img></div><div class=span2 style=margin-left:0px;><a id=user data-id=" + comment_userid + ">" + comment_user + "</a><p class=comment2>" + comment_title + "</p></div></div>";
                 }
                 $('#comment_picture' + comment_id + '').html(comments);
             } else {

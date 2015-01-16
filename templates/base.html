@@ -17,7 +17,7 @@
     body {
       background: #3b5998;
       padding-top: 90px;
-      font-family: "Oswald" !important;
+      font-family: Gill Sans, sans-serif !important;
     }
     </style>
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
@@ -41,7 +41,8 @@
                 <a data-toggle="dropdown" style="margin-top:-12px;cursor:pointer;">{{user.username}} (<div id="count"></div>)</a>
                 <ul class="dropdown-menu">
                   <div id="pre_picture"></div>
-                  <li><a href="/dashboard/">View my profile</a></li>
+                  <li><a href="/dashboard/">Dashboard</a></li>
+                  <li><a href="/user/{{user.username}}">View my profile</a></li>
                   <li><a href="/">Settings</a></li>
                   <li><a href="/logout/">Logout</a></li>
                 </ul>
@@ -59,19 +60,9 @@
               <ul class="nav">
                 <div class="search">
                   <form method="get" action="/search/" style="margin-bottom:0px;">
-                    <input type="text" name="q" id="id_q" maxlength="254" style="margin-top:12px;margin-left:15px;width:400px;" placeholder="Find friends">
+                    <input type="text" name="q" id="id_q" maxlength="254" style="margin-top:12px;margin-left:15px;width:393px;" placeholder="Find friends">
                     <button class="search-button"><img id="changePic" src="/images/zoom_black.png"></button>
                   </form>
-                </div>
-                <div class="search-results">
-                  {% if found_entries %}
-                    {% for i in found_entries %}
-                      <p id="user" data-id="{{i.id}}" style="margin-top:0;">{{ i.user.username }}</p>
-                    {% endfor %}
-                  {% endif %}
-                  {% if query_string and not found_entries %}
-                    <p>No results found.</p>
-                  {% endif %}
                 </div>
               </ul>
               {% else %}

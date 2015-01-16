@@ -27,3 +27,8 @@ class ChangePictureForm(forms.Form):
 class CommentForm(forms.Form):
   comment = forms.CharField(max_length=200)
 
+
+class InformationForm(forms.Form):
+  favorites = forms.CharField(max_length=200)
+  city = forms.CharField(max_length=50)
+

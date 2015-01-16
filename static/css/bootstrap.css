@@ -1065,7 +1065,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Gill Sans, sans-serif;
 }
 
 label {
@@ -1092,7 +1092,7 @@ input[type="color"],
 .uneditable-input {
   display: inline-block;
   height: 27px;
-  padding: 4px 6px;
+  padding: 4px 10px;
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 20px;
@@ -3850,14 +3850,13 @@ input[type="submit"].btn.btn-mini {
 .alert {
   padding: 8px 35px 8px 14px;
   margin-bottom: 22px;
-  margin-left: -55px;
-  margin-right: -55px;
+  margin-left: -20px;
+  margin-right: -20px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcdede;
   border: 1px solid #d2b2b2;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .alert,

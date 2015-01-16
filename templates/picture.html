@@ -32,13 +32,20 @@
             </div>
             <div class="commentBackground">
               {% for comment in comment %}
-                <p>{{comment.user_comment}}</p>
-                <p style="margin-top:-10px;">{{comment.title}}</p>
+                <div class="row">
+                  <div class="span1" style="width:45px";>
+                    <img class="photo_smaller" src="/media/{{comment.profile.image.path}}"></img>
+                  </div>
+                  <div class="span2" style="margin-left:0px;">
+                    <a id="user" data-id="{{comment.user_comment.id}}">{{comment.user_comment}}</a>
+                    <p class="comment2">{{comment.title}}</p>
+                  </div>
+                </div>
               {% endfor %}
             </div>
             <div class="formBackground comment">
               <form method="POST" action="/comment/{{picture.id}}" enctype="multipart/form-data">
-                <input type="text" name="comment" maxlength="200" style="width:260px;" placeholder="Write a comment" required>
+                <input type="text" name="comment" maxlength="200" style="width:252px;" placeholder="Write a comment" required>
                 <p><button class="comment-button">Submit</button></p>
               </form>
             </div>

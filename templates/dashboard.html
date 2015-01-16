@@ -8,7 +8,7 @@
 <div class="container">
   <div class="hero-unit">
     <div class="row">
-      <div class="span9">
+      <div class="span3" style="width:160px;">
         <div class="frame">
           <div class="img-wrapper">
             <ul class="img-list">
@@ -26,6 +26,14 @@
           </div>
         </div>
         <!--<div id="delete"></div>-->
+      </div>
+      <div class="span4" style="width:398px;">
+        <h3>{{user.username}}</h3>
+        <form method="POST" action="/edit/" enctype="multipart/form-data">
+          <input type="text" name="city" maxlength="50" placeholder="Lives in" required>
+          <input type="text" name="favorites" maxlength="200" placeholder="Interests" required>
+          <p><button class="btn btn-default" name="submit" type="submit" style="width:228px;">Submit</button></p>
+        </form>
       </div>
     </div>
     <div class="profileBackground">
