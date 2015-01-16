@@ -1,11 +1,13 @@
 # -*- encoding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
 from userprofile.models import Image
+from annoying.decorators import ajax_request
 from posted.models import Picture, Profile, Vote, Comment
 from django.http import HttpResponseRedirect, HttpResponse
 import simplejson as json
 
 
+@ajax_request
 @login_required
 def picture(request):
 
@@ -17,6 +19,7 @@ def picture(request):
         return {"status": "NotOK"}
 
 
+@ajax_request
 @login_required
 def getProfile(request):
     id = request.POST.get("id")
@@ -27,6 +30,7 @@ def getProfile(request):
     return {"status": "OK", "profiled": profilers}
 
 
+@ajax_request
 @login_required
 def load(request):
 
@@ -38,6 +42,7 @@ def load(request):
         return {"status": "NotYAYA"}
 
 
+@ajax_request
 @login_required
 def firstLook(request):
 
@@ -49,6 +54,7 @@ def firstLook(request):
         return {"status": "NotYEE"}
 
 
+@ajax_request 
 @login_required
 def everyone(request):
     id = request.POST.get("id")
@@ -59,6 +65,7 @@ def everyone(request):
     return {"status": "OHYEA", "commented": commenters}
 
 
+@ajax_request 
 @login_required
 def everyonePics(request):
 
@@ -66,7 +73,8 @@ def everyonePics(request):
     picturers = [pl.for_json() for pl in pictures]
     return {"status": "OHK", "pictured": picturers}
 
- 
+
+@ajax_request 
 @login_required
 def accept(request):
     id = request.POST.get("id")
@@ -82,7 +90,8 @@ def accept(request):
    
     return {"status": "WOO", "message": u"Accepted picture"}
 
- 
+
+@ajax_request 
 @login_required
 def reject(request):
     id = request.POST.get("id")
@@ -95,6 +104,7 @@ def reject(request):
     return {"status": "WOOP", "message": u"Rejected picture"}
 
 
+@ajax_request
 @login_required
 def delete(request):
 
