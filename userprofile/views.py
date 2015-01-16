@@ -50,12 +50,12 @@ def home(request):
     picture = Picture.objects.filter(upvotes=1)
     comment = Comment.objects.all()
     if not request.user.is_authenticated():
-        return render_to_response("register.html")
+        return render_to_response('register.html')
     return render_to_response("home.html", {"user": request.user, 'picture': picture, 'comment': comment})
 
 def dashboard(request):
     if not request.user.is_authenticated():
-        return render_to_response("register.html")
+        return render_to_response('register.html')
     return render_to_response("dashboard.html", {"user": request.user})
 
 def picture(request, id):
