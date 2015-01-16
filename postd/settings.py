@@ -79,6 +79,7 @@ ALLOWED_HOSTS = ['*']
 # Static asset configuration
 import os
 ROOT_URL = os.path.dirname(__file__)
+TEMP_PATH = os.path.realpath('.')
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -98,7 +99,7 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(ROOT_URL, "templates"),
+    os.path.join(TEMP_PATH, "templates"),
 )
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
