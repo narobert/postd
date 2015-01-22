@@ -30,7 +30,7 @@ function profile() {
                 $('#username_picture').html("<img class=photo src=/media/" + you + "></img>");
                 $('#delete').html("<p>Delete</p>");
             } else {
-                $('#username_picture').html("Empty");
+                $('#username_picture').html("<br><br><br><br>");
             }
         },
     });
@@ -52,7 +52,7 @@ function yourProfile() {
                 }
                 $('#your_picture').html(pictures);
             } else {
-                $('#your_picture').html("Empty");
+                $('#your_picture').html("<p>No pictures yet!</p>");
             }
         },
     });
@@ -74,9 +74,9 @@ function firstLooking() {
                     pictures += "<li class=item><a href=/upload/" + enlarge + ">" + username_from + " sent you a pic!</a></li>";
                 }
                 $('#pre_picture').html(pictures);
-                $('#count').html(i);
+                $('#count').html(" (" + i + ")");
             } else {
-                $('#pre_picture').html("Empty");
+                $('#pre_picture').html("<li class=item><a>Send a pic to get a pic!</a></li>");
                 $('#count').html("");
             }
         },

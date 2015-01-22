@@ -165,9 +165,18 @@ def changePic(request):
         if form.is_valid():
             newimg = Image.objects.create(user = request.user, path = form.cleaned_data['image'])
             newimg.save()
-            profile = Profile.objects.get(user = request.user)
-            profile.image = newimg
-            profile.save()
+            if (Profile.objects.filter(user=request.user).count() == 1):
+                profile = Profile.objects.get(user = request.user)
+                profile.image = newimg
+                profile.save()
+            else:
+                if (Information.objects.filter(user=request.user).count() == 1):
+                    information = Information.objects.get(user = request.user)
+                    profile = Profile.objects.create(user = request.user, image = newimg, information = information)
+                    profile.save()
+                else:
+                    profile = Profile.objects.create(user = request.user, image = newimg, information = None)
+                    profile.save()
             return HttpResponseRedirect('/dashboard/')
     else:
         form = ChangePictureForm()

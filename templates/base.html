@@ -38,7 +38,7 @@
             <ul class="nav pull-right">
               {% if user.is_authenticated %}
               <li class="dropdown">
-                <a data-toggle="dropdown" style="margin-top:-12px;cursor:pointer;">{{user.username}} (<div id="count"></div>)</a>
+                <a data-toggle="dropdown" style="margin-top:-12px;cursor:pointer;">{{user.username}}<div id="count"></div></a>
                 <ul class="dropdown-menu">
                   <div id="pre_picture"></div>
                   <li><a href="/dashboard/">Dashboard</a></li>
